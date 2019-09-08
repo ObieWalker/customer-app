@@ -14,7 +14,7 @@ function exposeDev(router) {
 
   Promise.promisifyAll(dbDev);
 
-  router.post('/dev/', , (req, res) => {
+  router.post('/dev/', (req, res) => {
     var action = req.body.action;
 
     switch (action) {

@@ -12,7 +12,7 @@ exports.expose = function (router) {
 function exposePM(router) {
   Promise.promisifyAll(dbPM);
 
-  router.post('/pm/', , (req, res) => {
+  router.post('/pm/', (req, res) => {
     var action = req.body.action;
     var errors = [];
     const invalidInput = (name, message = null) => errors.push({ name, message });

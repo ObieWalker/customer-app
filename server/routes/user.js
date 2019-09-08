@@ -19,7 +19,7 @@ exports.expose = function (router) {
 function exposeUsers(router) {
   Promise.promisifyAll(dbUsers);
 
-  router.post("/user/", , (req, res) => {
+  router.post("/user/", (req, res) => {
     var action = req.body.action;
     var email = req.body.email;
 
