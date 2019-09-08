@@ -1,0 +1,84 @@
+.tile {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+  margin: 3px;
+	-webkit-transition: box-shadow ease 0.8s;
+	-moz-transition: box-shadow ease 0.8s;
+	transition: box-shadow ease 0.8s;
+}
+
+.active {
+  color: #ffffff;
+}
+
+.on-time-standup {
+  border-top: 5px solid #4CB050;
+  box-shadow: inset 0 0 0 0 #4CB050;
+}
+
+.on-time-standup.active {
+  background-color: #4CB050;
+  border: 1px solid #4CB050;
+}
+
+.on-time-standup:hover {
+  box-shadow: inset 0 100px 0 0 #4CB050;
+}
+
+.early-late-standup {
+  border-top: 5px solid #FFC933;
+  box-shadow: inset 0 0 0 0 #FFC933;
+}
+
+.early-late-standup.active {
+  background-color: #FFC933;
+  border: 1px solid #FFC933;
+}
+
+.early-late-standup:hover {
+  box-shadow: inset 0 100px 0 0 #FFC933;
+}
+
+.missed-standup {
+  border-top: 5px solid #FF6B5A;
+  box-shadow: inset 0 0 0 0 #FF6B5A;
+}
+
+.missed-standup.active {
+  background-color: #FF6B5A;
+  border: 1px solid #FF6B5A;
+}
+
+.missed-standup:hover {
+  box-shadow: inset 0 100px 0 0 #FF6B5A;
+}
+
+.other-options-standup {
+  border-top: 5px solid #CCCCCC;
+  box-shadow: inset 0 0 0 0 #CCCCCC;
+}
+
+.other-options-standup.active {
+  background-color: #CCCCCC;
+  border: 1px solid #CCCCCC;
+}
+
+.other-options-standup:hover {
+  box-shadow: inset 0 100px 0 0 #CCCCCC;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.date-text {
+  font-weight: bold;
+}

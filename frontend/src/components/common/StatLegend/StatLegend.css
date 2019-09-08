@@ -1,0 +1,16 @@
+
+.color-representation {
+  width: 15px;
+  height: 7px;
+  border-radius: 5px;
+}
+
+.legend-text {
+  color: #888888;
+  font-size: 12px;
+}
+
+.emoticon {
+  width: 20px;
+  height: 20px;
+}

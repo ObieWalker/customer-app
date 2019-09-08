@@ -1,0 +1,59 @@
+.leftMenu {
+  background-color: black;
+  height: 100%;
+  min-height: 100%;
+}
+
+.logo {
+
+  background-image: url(~/img/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 32px;
+}
+
+.title {
+  justify-content: center;
+  color:white;
+}
+
+.separator {
+  background-color: var(--gray);
+  height: 1px;
+  width: 100%;
+  justify-content: center;
+  margin: 50px auto;
+}
+
+.menu {
+  height: 50px;
+  justify-content: center;
+  color:white;
+  margin-bottom: 25px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.inactive {
+  color: var(--gray);
+}
+
+.alertMessage {
+  height: 50px;
+}
+
+.app-nav-item{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.app-nav-item:hover{
+  text-decoration: none;
+  color: #ccc;
+}
+
+.menu button{
+  background: none;
+  border: none;
+}

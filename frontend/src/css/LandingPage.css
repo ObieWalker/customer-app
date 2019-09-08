@@ -1,0 +1,183 @@
+/**************
+* LANDING PAGE
+***************/
+.LandingPage {
+  height: 100%;
+  width: 100%;
+}
+
+.LandingPage > div {
+  height: 100%;
+}
+
+/*************************************
+  * LANDING PAGE - Promotional Banner
+*************************************/
+.LandingPage__promo-title {
+  letter-spacing: .1rem;
+}
+
+.LandingPage__promo-subtitle {
+  line-height: 1.6rem;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: .075rem;
+  color: #7e7e7e;
+}
+
+/*******************************
+ * LANDING PAGE - Quiz section
+ *******************************/
+.LandingPage-quiz {
+  position: relative;
+}
+
+.LandingPage-quiz__section-title {
+  text-align: center;
+  margin-top: 4.2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.LandingPage-quiz__section-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80%;
+  margin: auto;
+  padding: 2rem;
+}
+
+.LandingPage-code-viewer,
+.LandingPage-choices {
+  margin: 0 auto;
+}
+
+.LandingPage-code-viewer {
+  min-width: 72%;
+}
+
+.LandingPage-choices {
+  width: 72%;
+}
+
+.LandingPage-code-viewer__lang-selector {
+  width: 8rem;
+  margin: 1.2rem 0;
+}
+
+.LandingPage-code-viewer__lang-selector > button {
+  width: inherit;
+}
+
+.LandingPage-choices__question {
+  color: #999999;
+}
+
+.LandingPage-choices__item {
+  padding: .6rem .4rem;
+}
+
+.LandingPage-choices__item .btn {
+  font-family: Menlo;
+  font-size: .9rem;
+}
+
+.LandingPage-quiz__idk {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.LandingPage-quiz__idk > .btn {
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  font-family: Gordita;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 48rem) {
+  /*************************************
+  * LANDING PAGE - Promotional Banner
+  *************************************/
+  .LandingPage__promo-container {
+    margin: 25%;
+  }
+
+  .LandingPage__promo-title {
+    font-size: 2.4rem;
+  }
+
+  /*******************************
+  * LANDING PAGE - Quiz section
+  *******************************/
+  .LandingPage-quiz__section-title {
+    margin-top: 3rem;
+  }
+
+  .LandingPage-quiz__section-body {
+    padding: 10% 2rem;
+  }
+
+  .LandingPage-code-viewer {
+    font-size: .8rem;
+  }
+
+  .LandingPage-choices__question {
+    margin: 1rem 0;
+  }
+
+  .LandingPage-quiz__idk > .btn {
+    padding: .8rem;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  /*************************************
+  * LANDING PAGE - Promotional Banner
+  *************************************/
+  .LandingPage__promo-container {
+    margin: 20% 30%;
+  }
+
+  .LandingPage__sign-in-container {
+    /*margin: 30% 30%; */
+    margin-top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .LandingPage__promo-title {
+    font-size: 2.8rem;
+  }
+
+  .LandingPage__sign-in {
+    font-size: 2.8rem;
+  }
+
+  .LandingPage__sign-in a {
+    color: #ffffff;
+  }
+
+  /*******************************
+  * LANDING PAGE - Quiz section
+  *******************************/
+  .LandingPage-quiz__section-title {
+    margin-top: 4.2rem;
+  }
+
+  .LandingPage-choices__question {
+    margin-top: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .LandingPage-code-viewer {
+    padding: 0 1.4rem;
+  }
+
+  .LandingPage-quiz__idk > .btn {
+    padding: 1.4rem;
+  }
+}

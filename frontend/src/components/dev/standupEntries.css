@@ -1,0 +1,140 @@
+
+.redAlert {
+  background-color: var(--danger);
+}
+
+.yellowAlert {
+  background-color:  var(--warning);
+}
+
+.greenAlert {
+  background-color:  var(--success);
+}
+
+.newAlert {
+  background-color:  #D8D8D8;
+}
+
+/*
+.fav_dev {
+  width: 25px;
+  height: 25px;
+  background-image: url(/img/fav_dev_inactive.png);
+  background-position: center;
+  background-size: 35%;
+  background-repeat: no-repeat;
+}
+*/
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: var(--success);
+  text-decoration: underline;
+}
+
+.absoluteAlertMessage {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  left: calc( 100vw / 2 - 50px);
+  top: calc( 100vh / 4 + 25px );
+}
+
+.standupDate {
+  width: 70px;
+  height: 70px;
+  color:white;
+  line-height: 5;
+  cursor: pointer;
+  flex-wrap: wrap;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  justify-content: center;
+  background-color: var(--gray);
+}
+
+.selected {
+  background-color: var(--success);
+}
+
+.nostandups {
+  color: var(--gray);
+}
+
+.hidden {
+  display: none;
+}
+
+.feedback {
+  margin-top: 10px;
+}
+
+.taskCompleted {
+  text-decoration: line-through;
+}
+
+.optoutText {
+  color: var(--red);
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.shareable-link {
+  height: 50px;
+  width: 150px;
+  background-image: url(~/postmatch/img/shareLink.jpg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.alertMessageStandupEntries {
+  width: 250px;
+  height: 40px;
+  margin: auto -50px;
+}
+
+.section {
+  background-color: #fff;
+  padding: 30px 40px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 40px -40px #000000;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .section {
+    padding: 15px;
+  }
+}
+
+.dev-status {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dev-status.active {
+  background-color: #4CB050;
+}
+
+.dev-status.inactive {
+  background-color: #FF6B5A;
+}
+
+#dropdown-standup-periods,
+#dropdown-standup-periods:hover,
+#dropdown-standup-periods:active,
+#dropdown-standup-periods:focus,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item:active {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}

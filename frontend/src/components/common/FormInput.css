@@ -1,0 +1,117 @@
+.hidden {
+  opacity: 0;
+}
+
+.border--mercury {
+  border-color: #e7e7e7!important;
+}
+
+.border--transparent {
+  border-color: transparent!important;
+}
+
+.FormInput,
+.FormInput__label,
+.FormInput__pseudo-label,
+.FormInput__error-message {
+  width: 100%;
+}
+
+.FormInput {
+  margin: .4rem 0 .8rem 0;
+  padding-bottom: 1.4rem;
+  position: relative;
+}
+
+.FormInput__error-message {
+  margin-top: .4rem;
+  position: absolute;
+  bottom: 0;
+  color: #c12929;
+  font-size: .8rem;
+}
+
+.FormInput__label {
+  font-size: .8rem;
+}
+
+.FormInput__label--active {
+  color: #000000;
+}
+
+.FormInput__label--inactive {
+  color: #d4d4d4;
+}
+
+.FormInput__textbox-container {
+  z-index: 2;
+  position: relative;
+  cursor: text;
+  overflow-x: hidden;
+  padding: .8rem 0;
+
+  will-change: border-bottom-color;
+  border-bottom: .14rem #d4d4d4 solid;
+  transition: border-bottom-color .2s ease-in-out;
+}
+
+.FormInput.has-error > .FormInput__textbox-container:not(.border--transparent) {
+  border-bottom-color: #c12929 !important;
+}
+
+.FormInput.has-error .FormInput__underline--inactive {
+  border-bottom-color: #c12929 !important;
+}
+
+.FormInput__textbox-container > input {
+  display: none;
+}
+
+.FormInput__textbox.password {
+  -webkit-text-security: disc !important;
+}
+
+.FormInput__textbox {
+  outline: none;
+  display: inline-block;
+}
+
+/* For Mozilla -- maintain element height */
+@-moz-document url-prefix() {
+  .FormInput__textbox::before {
+    content: "\feff ";
+  }
+}
+
+.FormInput__pseudo-label {
+  position: absolute;
+  top: .8rem;
+  z-index: -1;
+}
+
+.FormInput__textbox {
+  width: auto;
+  min-width: 1px;
+  z-index: 2;
+}
+
+.FormInput__underline {
+  bottom: 0;
+  position: absolute;
+  width: 50%;
+
+  border-bottom-width: .14rem;
+  border-bottom-style: solid;
+
+  transition:
+    width .2s ease-in-out,
+    border-color .2s ease-in-out;
+}
+
+.FormInput__underline--active {
+  border-bottom-color: #000000;
+}
+
+.FormInput__underline--inactive {
+  border-bottom-color: #d4d4d4;
+}

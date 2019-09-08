@@ -1,0 +1,231 @@
+
+/* FONTS */
+@font-face {
+  font-family: Gordita;
+  src: url(/fonts/hinted-GorditaRegular.ttf) format('truetype'),
+    url(/fonts/hinted-GorditaMedium.ttf) format('truetype'),
+    url(/fonts/hinted-GorditaBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Ginto;
+  src: url(/fonts/Ginto_Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Ringside;
+  src: url(/fonts/Ringside-Medium.otf) format('truetype');
+}
+
+@font-face {
+  font-family: Menlo;
+  src: url(/fonts/Menlo-Regular.ttf) format('truetype');
+}
+
+/* BASE */
+html, body {
+  font-family: Gordita;
+  font-size: 14px;
+  font-weight: 400;
+
+  height: 100%;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+  font-family: Gordita, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+/* GENERIC */
+.bg-dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+/*****************
+ * TURING HEADER
+ *****************/
+.turing-header {
+  width: 100%;
+  padding: 2.6rem;
+}
+
+.turing-header--layout-relative {
+  position: relative;
+}
+
+.turing-header--layout-fixed {
+  position: fixed;
+}
+
+.turing-header__title {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 48rem) {
+  .turing-header {
+    padding: 3.2rem 3.6rem;
+  }
+}
+
+@media only screen and (min-width: 64rem) {
+  .turing-header {
+    padding: 4.2rem 4.6rem;
+  }
+}
+
+
+/*********************************
+ * BUTTON Settings
+ *********************************/
+.btn {
+  padding: .8rem;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+
+  background: transparent;
+  outline: none;
+}
+
+.btn .icon {
+  margin-right: .5rem;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.btn--rounded {
+  border-radius: 2rem;
+}
+
+.btn--light {
+  color: #202020;
+  border-color: #d4d4d4;
+  background-color: #ffffff;
+}
+
+.btn--light:hover,
+.btn--light:active {
+  color: #000000;
+  background-color: #d4d4d4;
+}
+
+.btn--dark {
+  color: #ffffff;
+  border-color: #5a5a5a;
+  background-color: #1e1e1e;
+}
+
+.btn--dark:hover,
+.btn--dark:active {
+  color: #ffffff;
+  background-color: #5a5a5a;
+}
+
+/**********************************************************************
+ * COLOR PALETTE
+ *
+ * [2019-01-29] CSS variables are not supported in all versions of IE
+ * so I won't be using them here.
+ * #569cd6 -- reserved word code color
+ * #ce9178 -- string code color
+ * #d4d4d4 -- normal code color
+ * #608b4e -- green code color
+ * #5a5a5a -- line number color (for code sample)
+ * #1e1e1e -- dark background
+ * #7e7e7e -- subtitle color
+ * #202020 -- text on light
+ * #ffffff -- text on dark
+ *********************************************************************/
+
+
+/*********************************************************************
+ * ANIMATIONS
+ *
+ * Third-party library of CSS animations
+ * https://github.com/daneden/animate.css
+ *********************************************************************/
+
+@media (prefers-reduced-motion) {
+  .fadeOutDown,
+  .fadeOut {
+    opacity: 0;
+  }
+}
+
+
+.verification-page nav{
+  background: #212529;
+  height: 60px;
+  padding: 15px;
+}
+
+.verification-page .nav-title{
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+.verification-page-view {
+  text-align: center;
+  padding: 100px;
+}
+
+
+
+.verification-page-view h1{
+  font-weight: bold;
+  padding-bottom: 10px;
+  color: #1affff
+}
+
+.user-update-form{
+  margin: 15px -15px;
+}
+
+
+.user-update-form label{
+  color: #212529 !important;
+  font-size: 15px;  
+}
+
+.user-update-form .form-control{
+  padding: 8px;
+  height: 40px;
+}
+
+
+.user-update-form .update-btn{
+  padding: 8px;
+  height: 40px;
+  width: 150px;
+}
+
+.pointer {
+  cursor: pointer;
+}

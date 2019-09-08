@@ -1,0 +1,54 @@
+{
+  "name": "pmServer",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "crypto-random-string": "^2.0.0",
+    "jquery": "^3.3.1",
+    "mysql": "^2.17.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "react": "^16.8.5",
+    "react-bootstrap": "^1.0.0-beta.6",
+    "react-compound-slider": "^1.2.1",
+    "react-day-picker": "^7.3.0",
+    "react-dom": "^16.8.5",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.0.4",
+    "react-js-pagination": "^3.0.2",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "react-stripe-elements": "^2.0.3",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "redux-persist-transform-filter": "0.0.18",
+    "sendgrid": "^5.2.3",
+    "typescript": "^3.3.4000"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "nodemon --inspect server.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "proxy": "http://localhost:6969",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

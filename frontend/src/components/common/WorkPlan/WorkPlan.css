@@ -1,0 +1,15 @@
+
+.work-plan table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.work-plan table td, .work-plan table th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.work-plan table th {
+  border-bottom: 2px solid #686868;
+}

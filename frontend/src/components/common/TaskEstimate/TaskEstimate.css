@@ -1,0 +1,15 @@
+
+.task-estimate {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.task-estimate td, .task-estimate th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.task-estimate th {
+  border-bottom: 2px solid #686868;
+}

@@ -1,0 +1,20 @@
+
+.work-plan-status {
+  width: 60px;
+  color: #fff;
+  border-radius: 15px;
+  text-align: center;
+  padding: 3px 12px;
+  font-size: 12px;
+}
+.work-plan-status.done {
+  background-color: #4CB050;
+}
+
+.work-plan-status.doing {
+  background-color: #46AAEC;
+}
+
+.work-plan-status.todo {
+  background-color: #888888;
+}

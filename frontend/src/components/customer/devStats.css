@@ -1,0 +1,29 @@
+
+.percentage-status {
+  padding: 5px 18px;
+  border-radius: 20px;
+  color: white;
+  height: 30px;
+}
+
+.percentage-status.bad {
+  background-color: #FF6B5A;
+}
+
+.percentage-status.okay {
+  background-color:#FF9A34;
+}
+
+.percentage-status.good {
+  background-color: #8ACF30;
+}
+
+.accordion-toggle[data-toggle="collapse"]:before {
+  content: url("../../assets/expand.svg");
+  margin: -5px 5px 0 0;
+}
+
+.accordion-toggle[aria-expanded="true"]:before {
+  content: url("../../assets/collapse.svg");
+  margin: -5px 5px 0 0;
+}

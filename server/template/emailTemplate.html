@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Turing - Verify email</title>
+  <style>
+    html,
+    body {
+      margin: 0 auto !important;
+      padding: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
+      background: #fff;
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 16px;
+      background: #f7f7f7;
+      background-color: #f7f7f7;
+    }
+
+    .root {
+      width: 100%;
+      height: 100%;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      background: #f7f7f7;
+      background-color: #f7f7f7;
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 16px;
+    }
+
+    .content-holder {
+      width: 70%;
+      min-width: 300px;
+      max-width: 600px;
+      margin: 0 auto;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding: 70px;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      background: #fff;
+      background-color: #fff;
+    }
+
+    .header {
+      margin-bottom: 150px;
+    }
+
+    .logo {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 30px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .title-div {
+      text-align: center;
+      margin-bottom: 200px;
+    }
+
+    .title-div .title {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 28px;
+      font-weight: normal;
+      color: #000;
+      margin-bottom: 10px;
+    }
+
+    .title-div .subtitle {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 22px;
+      font-weight: normal;
+      color: #999999;
+    }
+
+    .verify-txt {
+      margin-top: 200px;
+      font-size: 22px;
+      font-weight: normal;
+      color: #151515;
+      text-align: center;
+    }
+
+    .verify-link-div {
+      margin-top: 100px;
+      margin-bottom: 200px;
+      display: block;
+      text-align: center;
+    }
+
+    .verify-link {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0000ff;
+      text-decoration: none;
+      margin-bottom: 70px;
+    }
+
+    .footer-div {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer-title {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: #202020;
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .footer-txt {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+      color: #7e7e7e;
+      line-height: 25px;
+      text-align: left;
+    }
+
+    .txt-c {
+      text-align: center;
+    }
+
+    .margin-100-0 {
+      margin: 100px 0;
+    }
+
+    .margin-50-0 {
+      margin: 50px 0;
+    }
+
+    .margin-b-100 {
+      margin-bottom: 100px;
+    }
+
+    .margin-b-50 {
+      margin-bottom: 50px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .root {
+        width: 100%;
+        height: 100%;
+        padding: 0 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .content-holder {
+        display: block;
+        width: 90%;
+        min-width: none;
+        max-width: none;
+        margin: 0 auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 20px 0;
+      }
+
+      .content-holder>div {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="root">
+    <div class="content-holder">
+      <div class="header">
+        <div class="logo">Turing</div>
+      </div>
+      <div class="title-div">
+        <div class="title">Hi there</div>
+        <div class="subtitle">Welcome</div>
+      </div>
+      <div class="verify-txt">Please verify your email to access to your daily standup dashboard.</div>
+      <div class="verify-link-div">
+        <a class="verify-link" href="http://turing.ly/postmatch/verification?token=%TOKEN%&email=%EMAIL_TO%">
+          Verify email
+        </a>
+      </div>
+      <div class="footer-div">
+        <div class="footer-title">Settings</div>
+        <div class="footer-txt">
+          <div>You’ll be notified every day. Go to your <a href="https://turing.ly/postmatch/account/setting">Turing Dashboard</a> to chanage notification settings.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

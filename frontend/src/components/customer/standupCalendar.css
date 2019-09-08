@@ -1,0 +1,82 @@
+.currentMonth {
+  font-size: 2em;
+  font-weight: normal;
+  margin-top: 30px;
+}
+.nextMonth {
+  font-size: 1em;
+  font-weight: normal;
+  margin-top: 50px;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.nextMonth:hover {
+  text-decoration: underline;
+}
+
+.prevMonth {
+  font-size: 1em;
+  font-weight: normal;
+  margin-top: 50px;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.prevMonth:hover {
+  text-decoration: underline;
+}
+
+.daysRow {
+  height: 45px;
+  margin-top: 30px;
+}
+
+.dayHeader {
+  height: 10px;
+}
+
+.dayFrame {
+  height: 35px;
+  background-color: var(--light);
+  cursor: pointer;
+}
+
+.dayText {
+  margin: auto;
+  font-weight: bold;
+}
+
+.selectedDate {
+  box-shadow: 1px 1px 1px 1px #55efc4;
+}
+
+.nextDays {
+  background-image: url(/postmatch/img/next_calendar.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.nextDaysDisable {
+  background-image: url(/postmatch/img/next_calendar_inactive.png);
+}
+
+.prevDays {
+  background-image: url(/postmatch/img/prev_calendar.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.prevDaysDisable {
+  background-image: url(/postmatch/img/prev_calendar_inactive.png);
+}
+
+.alertNoStandUp {
+  opacity: 1;
+}

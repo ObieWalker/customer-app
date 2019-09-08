@@ -1,0 +1,50 @@
+.fillHeight {
+    overflow-y: hidden;
+    min-height: 100vh !important;
+
+}
+
+.invalidTimeToStandup {
+  margin: 100px auto;
+  position: relative;
+}
+
+.questionTitle {
+  margin-top: 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+.standupForm {
+  margin-top: 50px;
+}
+
+.planHeader {
+  margin-top: 20px;
+  color: var(--gray);
+}
+
+.buttonAddTask {
+  margin-top: 20px;
+  padding-left: 10px;
+}
+
+.setupView {
+  overflow-y: visible;
+}
+
+.standupState {
+  font-weight: normal;
+  font-size: 2em;
+  padding-top: 100px;
+  padding-left: 10px;
+}
+
+.smallandup {
+  font-weight: normal;
+  font-size: 1.5em;
+  padding-top: 30px;
+  padding-left: 10px;
+}

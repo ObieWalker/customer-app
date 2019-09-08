@@ -1,0 +1,135 @@
+/**************
+* SIGN IN PAGE
+***************/
+.SignInPage,
+.SignInPage > div {
+  height: 100%;
+  width: 100%;
+}
+
+/*************************************
+ * SIGN IN PAGE - Promotional Banner
+ *************************************/
+.SignInPage__promo-container {
+  margin-left: 20%;
+  margin-right: 30%;
+  padding-top: 10%;
+}
+
+.SignInPage__promo-title {
+  font-size: 2.8rem;
+  letter-spacing: .1rem;
+}
+
+.SignInPage__promo-subtitle {
+  line-height: 1.6rem;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .09rem;
+  color: #c4c4c4;
+}
+
+/*****************
+* SIGN IN Portal
+******************/
+
+.SignInPage-portal {
+  display: flex;
+  position: relative;
+}
+
+.SignInPage-portal__switch-cta {
+  cursor: pointer;
+  font: Ginto;
+  position: absolute;
+  top: 4.2rem;
+  right: 4.6rem;
+}
+
+.SignInPage-form-container {
+  margin: auto;
+  width: 100%;
+}
+
+.SignInPage-form-header {
+  text-align: center;
+  margin: 2rem 0 3rem 0;
+}
+
+.SignInPage-form-header__title {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.SignInPage-form-header__subtitle {
+  font-size: 1.2rem;
+  color: #7e7e7e;
+}
+
+/*********
+* DIVIDER
+*********/
+.SignInPage-or-divider {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: .8rem;
+  margin: 1.4rem 0;
+}
+
+/***************
+* SOCIAL MEDIA
+***************/
+.SignInPage-social-media__button {
+  margin: 1.2rem 0;
+  width: inherit;
+}
+
+.SignInPage-social-media__button > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Gordita;
+  font-weight: 600;
+}
+
+.SignInPage-social-media__button > button > .icon {
+  margin-top: -4px;
+  margin-bottom: -4px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+
+.alertMessage {
+  justify-content: center;
+  text-align: center;
+  height: 50px;
+  font-size: 16px;
+}
+
+.facebookauth,
+.facebookauth:hover {
+  color: rgba(0, 0, 0, 0.54);
+  background-color: rgb(255, 255, 255);
+  display: inline-flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.54);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+  padding: 0px;
+  border-radius: 1px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}

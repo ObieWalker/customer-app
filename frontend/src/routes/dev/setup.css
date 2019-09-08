@@ -1,0 +1,54 @@
+.setupView {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .setupView {
+    padding: 0 20px;
+  }
+}
+
+.header {
+  margin-top: 50px;
+  border-bottom: 0.5px solid var(--gray);
+}
+
+.subTitle {
+  margin-top: 50px;
+}
+
+.dropdownTimeZones {
+  color: black;
+  width:201px;
+}
+
+.rowTitle {
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 2em;
+}
+
+.error {
+  color: red;
+}
+
+.alertMessage {
+  justify-content: center;
+  text-align: center;
+  height: 60px;
+}
+
+.optoutCheckbox {
+  width: 25px;
+  height: 25px;
+}
+
+.disableText {
+  color: var(--gray);
+}
+
+.alertMessageSetup {
+  justify-content: center;
+  text-align: center;
+}
