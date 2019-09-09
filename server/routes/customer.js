@@ -15,7 +15,7 @@ function exposeCustomer(router) {
 
   Promise.promisifyAll(dbCustomer);
 
-  router.post('/customer/', , (req, res) => {
+  router.post('/customer/', (req, res) => {
     var action = req.body.action;
     let devFilter;
 
