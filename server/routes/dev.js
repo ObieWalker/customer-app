@@ -58,8 +58,15 @@ function exposeDev(router) {
 
         var userId = req.body.userId;
 
+        dbDev.checkForValidStandupTime(userId)
+          .then(function (result) {
+            if (result) res.json({ success: true, result: result });
+            else res.json({ success: false, errorMessage: errorCodes.BAD_REQUEST });
+          })
+          .catch(function (error) {
+            res.json({ success: false, errorMessage: errorCodes.BAD_REQUEST });
+          });
         
-
         break;
 
       /* GET STANDUP PLAN TASK BY DATE */

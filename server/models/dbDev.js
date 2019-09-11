@@ -31,8 +31,18 @@ function listSetupStandupTime(userId, callback) {
   })
 }
 
-function checkForValidStanupTime(userId, callback) {
+function checkForValidStandupTime(userId, callback) {
+  var sqlstr = `SELECT * FROM developer_standup_timezone_v2 WHERE id = ?`;
 
+  util.executeSQL(sqlstr,[userId])
+  .then(function(allRows) {
+
+    if(util.BETTERjson && allRows.length > 0) allRows = util.doBetterJson([ 'id', 'userId', 'timezone', 'hour' ], allRows);
+    callback(null, allRows);
+  })
+  .catch(function(error) {
+    callback(error, null);
+  })
 }
 
 function getStandupPlanTasks(userId, callback) {
@@ -157,7 +167,7 @@ function getMailingListByDev(devId, callback) {
 const dbDev = {
   setupStandupTimeZone: setupStandupTimeZone,
   listSetupStandupTime: listSetupStandupTime,
-  checkForValidStanupTime: checkForValidStanupTime,
+  checkForValidStandupTime: checkForValidStandupTime,
   getStandupPlanTasks: getStandupPlanTasks,
   getStandupPlanTasksByStandupId: getStandupPlanTasksByStandupId,
   saveStandup: saveStandup,
