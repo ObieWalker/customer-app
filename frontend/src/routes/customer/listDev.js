@@ -8,7 +8,6 @@ import Pagination from "react-bootstrap/Pagination";
 import Alert from "react-bootstrap/Alert";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import DevList from "../../components/Dashboard/views/customer/DevList";
-import axios from "axios";
 import routeNames from "../../constants/routeNames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -78,6 +77,18 @@ class ListDevView extends Component {
     this.getDeveloperList();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.developers !== prevProps.developers) {
+      this.handleDevList(this.props.developers)
+    }
+    if (this.props.count !== prevProps.count) {
+      this.handleOnDevCount(this.props.count, this.props.activeCount)
+    }
+    if (this.props.addToFav !== prevProps.addToFav) {
+      this.handleAddToFav(this.props.addToFav)
+    }
+  }
+
   componentWillMount() {
     this.timeouts = [];
   }
@@ -96,45 +107,14 @@ class ListDevView extends Component {
       devFilter: this.state.devFilter
     };
 
-    var self = this;
-    axios
-      .post(routeNames.API_CUSTOMER, body)
-      .then(function (response) {
-        var data = response.data;
-
-        if (data.success) {
-          self.setState({ developers: data.result });
-        }
-      })
-      .catch(function (_err) {
-        if (_err && _err.response && _err.response.status === 401) {
-          var action = userLoggedOutAction();
-          self.props.dispatch(action);
-          self.props.history.push(routeNames.LOGIN);
-          return;
-        }
-      });
+    this.props.onGetDeveloperList(body)
   }
 
   getDevCounts() {
     const body = {
       action: "inital_counts"
     };
-    var self = this;
-    axios
-      .post(routeNames.API_CUSTOMER, body)
-      .then(function (response) {
-        var data = response.data;
-        if (data.success) {
-          self.setState({
-            activeCount: data.result[0],
-            count: data.result[1]
-          });
-        }
-      })
-      .catch(function (_err) {
-        self.setState({ count: 0 });
-      });
+    this.props.onGetDeveloperList(body)
   }
 
   countDeveloperList(filter, startStandupDate, endStandupDate, devFilter) {
@@ -145,19 +125,23 @@ class ListDevView extends Component {
       filter: filter,
       devFilter: devFilter
     };
-    var self = this;
-    axios
-      .post(routeNames.API_CUSTOMER, body)
-      .then(function (response) {
-        var data = response.data;
+    this.props.onCountDevelopers(body)
+  }
 
-        if (data.success) {
-          self.setState({ count: data.result[0], activeCount: data.result[1] });
-        } else self.setState({ count: 0 });
-      })
-      .catch(function (_err) {
-        self.setState({ count: 0 });
-      });
+  handleOnDevCount = (count, activeCount) => {
+    if (count) {
+      this.setState({ count, activeCount });
+    } else this.setState({ count: 0 });
+  }
+
+  handleDevList = (developers) => {
+    if(developers) {
+      this.setState({ developers });
+    } else {
+      var action = userLoggedOutAction();
+      this.props.dispatch(action);
+      this.props.history.push(routeNames.LOGIN);
+    }
   }
 
   startDayChange(day) {
@@ -200,25 +184,20 @@ class ListDevView extends Component {
       devId: devId
     };
 
-    var self = this;
-    axios
-      .post(routeNames.API_CUSTOMER, body)
-      .then(function (response) {
-        var data = response.data;
-
-        if (data.success) {
-          self.setState({
-            error: false,
-            showAlert: true,
-            alertMessage: "Added developer to favourite list!"
-          });
-          self.timer = setTimeout(() => {
-            self.closeAlert();
-          }, 3000);
-        }
-      })
-      .catch(function (_err) { });
+    this.props.addDevToFav(body)
   }
+
+  handleAddToFav = () => {
+    this.setState({
+      error: false,
+      showAlert: true,
+      alertMessage: "Added developer to favourite list!"
+    });
+    this.timer = setTimeout(() => {
+      this.closeAlert();
+    }, 3000);
+  }
+
   clearTimeouts = () => {
     this.timeouts.forEach(clearTimeout);
   };
@@ -732,7 +711,20 @@ class ListDevView extends Component {
 const mapStateToProps = appState => ({
   full_name: appState.userRoot.user.full_name,
   userId: appState.userRoot.user.id,
-  role_type_id: appState.userRoot.user.role_type_id
+  role_type_id: appState.userRoot.user.role_type_id,
+  developers: appState.customer.devList,
+  count: appState.customer.count,
+  activeCount: appState.customer.activeCount,
+  addToFav: appState.customer.addToFav
+
 });
 
-export default withRouter(connect(mapStateToProps)(ListDevView));
+const mapDispatchToPops = dispatch => {
+  return {
+    onGetDeveloperList: (data) => dispatch({ type: "GET_DEV_LIST", data }),
+    onCountDevelopers: (data) => dispatch({ type: "COUNT_DEV_LIST", data }),
+    addDevToFav: (data) => dispatch({ type: "ADD_TO_FAV", data }),
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToPops)(ListDevView));
