@@ -48,6 +48,15 @@ class DevStatsView extends Component {
     this.calculateStandupStats();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.tasks !== prevProps.tasks) {
+      this.setState({ tasks: this.props.tasks }, () => this.calculateEstimateScore());
+    }
+    if (this.props.results !== prevProps.results) {
+      this.handleStandupsByFeedback(this.props.results);
+    }
+  }
+
   /* THIS COMPONENT WILL:
   - CALCULATE DEV. STANDUP STATS BY PERCENT
   - CALCULATE DEV. TASK ESTIMATE SCORE
@@ -60,16 +69,7 @@ class DevStatsView extends Component {
       startStandupId,
       endStandupId,
     };
-
-    axios
-      .post(routeNames.API_CUSTOMER, body)
-      .then((response) => {
-        var data = response.data;
-        if (data.success && data.result.length) {
-          this.setState({ tasks: data.result }, () => this.calculateEstimateScore());
-        }
-      })
-      .catch((error) => console.log(error));
+    this.props.onGetAllTasks(body);
   }
 
   calculateStandupStats() {
@@ -159,37 +159,36 @@ class DevStatsView extends Component {
   getFeedbackByStandups(standupIds) {
 
     const { role_type_id: roleId } = this.props;
-    axios.post(routeNames.API_CUSTOMER, {
+    this.props.onGetFeedbackByStandups({
       action: 'get_feedback_rate',
       roleId,
       standupIds,
     })
-      .then(response => {
-        const { result } = response.data;
-        if(result && result.length > 0) {
-          var totalRates = 0;
-          result.map(function(rate) {
-            totalRates += rate.numberOfRate;
-          });
+  }
 
-          var percentNotHappy = 0;
-          var percentOK = 0;
-          var percentGood = 0;
-          var percentGreat = 0;
+  handleStandupsByFeedback = (result) => {
+    if(result && result.length > 0) {
+      var totalRates = 0;
+      result.map(function(rate) {
+        totalRates += rate.numberOfRate;
+      });
 
-          if(totalRates > 0) {
-            result.map(function(rate) {
-              if(rate.rate === 0) percentNotHappy = Math.round(100 * rate.numberOfRate / totalRates);
-              else if(rate.rate === 1) percentOK = Math.round(100 * rate.numberOfRate / totalRates);
-              else if(rate.rate === 2) percentGood = Math.round(100 * rate.numberOfRate / totalRates);
-              else percentGreat = Math.round(100 * rate.numberOfRate / totalRates);
-            });
+      var percentNotHappy = 0;
+      var percentOK = 0;
+      var percentGood = 0;
+      var percentGreat = 0;
 
-            this.setState( { notHappyPercent: percentNotHappy, okPercent: percentOK, goodPercent: percentGood, greatPercent: percentGreat } );
-          }
-        }
-      })
-      .catch(error => console.log(error));
+      if(totalRates > 0) {
+        result.map(function(rate) {
+          if(rate.rate === 0) percentNotHappy = Math.round(100 * rate.numberOfRate / totalRates);
+          else if(rate.rate === 1) percentOK = Math.round(100 * rate.numberOfRate / totalRates);
+          else if(rate.rate === 2) percentGood = Math.round(100 * rate.numberOfRate / totalRates);
+          else percentGreat = Math.round(100 * rate.numberOfRate / totalRates);
+        });
+
+        this.setState( { notHappyPercent: percentNotHappy, okPercent: percentOK, goodPercent: percentGood, greatPercent: percentGreat } );
+      }
+    }
   }
 
   getStandupDateById(standupId) {
@@ -482,7 +481,7 @@ class DevStatsView extends Component {
             <div className={percentageStatusClassName(consitencyScore * 100)}>
               {formatPercentage(consitencyScore * 100)}
             </div>
-          </div>
+          </div> 
         </div>
 
         <div className="mb-5">
@@ -508,7 +507,14 @@ class DevStatsView extends Component {
 const mapStateToProps = appState => ({
   full_name: appState.userRoot.user.full_name,
   userId: appState.userRoot.user.id,
-  role_type_id: appState.userRoot.user.role_type_id
+  role_type_id: appState.userRoot.user.role_type_id,
+  tasks: appState.customer.tasks
 });
 
-export default withRouter(connect(mapStateToProps)(DevStatsView));
+const mapDispatchToPops = dispatch => {
+  return {
+    onGetAllTasks: (data) => dispatch({ type: "GET_ALL_TASKS", data }),
+    onGetFeedbackByStandups: (data) => dispatch({ type: "GET_FEEDBACK_BY_STANDUPS", data })
+  }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToPops)(DevStatsView));

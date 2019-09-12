@@ -34,28 +34,29 @@ class AccountSetting extends Component {
         action: "getMailingList",
         customerId: this.props.currentUser.id
       };
+      this.props.onGetMailingList(body)
+    }
+  }
 
-      var self = this;
-      axios.post(routeNames.API_CUSTOMER, body)
-        .then(function(response) {
-          var data = response.data;
-          if (data.success) {
-            var mailList = '';
-            data.result.map(function(mailData, index) {
-              if(mailList === '') mailList += mailData.email;
-              else mailList += "\r\n" + mailData.email;
-            });
-            self.setState({ mailList: mailList });
-          }
-        })
-        .catch(function(_err) {
-          if (_err && _err.response && _err.response.status === 401) {
-            var action = userLoggedOutAction();
-            self.props.dispatch(action);
-            self.props.history.push(routeNames.LOGIN);
-            return;
-          }
-        });
+  componentDidUpdate(prevProps) {
+    if (this.props.emailList !== prevProps.emailList) {
+      this.handleOnEmailList(this.props.emailList)
+    }
+  }
+
+  handleOnEmailList = (emailList) => {
+    if (Boolean(emailList.length)) {
+      let mailList = '';
+      emailList.map(function(mailData, index) {
+        if(mailList === '') mailList += mailData.email;
+        else mailList += "\r\n" + mailData.email;
+      });
+      this.setState({ mailList: mailList });
+    } else {
+      var action = userLoggedOutAction();
+      this.props.dispatch(action);
+      this.props.history.push(routeNames.LOGIN);
+      return;
     }
   }
 
@@ -297,7 +298,17 @@ class AccountSetting extends Component {
 
 const mapStateToProps = appState => ({
   role_type_id: appState.userRoot.user.role_type_id,
-  currentUser: appState.userRoot.user
+  currentUser: appState.userRoot.user,
+  emailList: appState.customer.emailList,
+  mailSuccess: appState.customer.mailSuccess
 });
 
-export default withRouter(connect(mapStateToProps)(AccountSetting));
+const mapDispatchToPops = dispatch => {
+  return {
+    onGetMailingList: (data) => dispatch({ type: "GET_MAILING_LIST", data }),
+    onCountDevelopers: (data) => dispatch({ type: "COUNT_DEV_LIST", data }),
+    addDevToFav: (data) => dispatch({ type: "ADD_TO_FAV", data }),
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToPops)(AccountSetting));

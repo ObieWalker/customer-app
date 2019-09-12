@@ -43,28 +43,25 @@ class ListFavouriteDevView extends Component {
       this.getFavouriteDeveloperList();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.developers !== prevProps.developers) {
+
+      if(this.props.developers) {
+        this.setState({ developers: this.props.developers });
+      } else {
+        var action = userLoggedOutAction();
+        this.props.dispatch(action);
+        this.props.history.push(routeNames.LOGIN);
+      }
+    }
+  }
+
   getFavouriteDeveloperList() {
     var body = {
       action: 'list_favDevs',
       customerId: this.props.userId
     }
-    var self = this;
-    axios.post(routeNames.API_CUSTOMER, body)
-    .then(function(response) {
-      var data = response.data;
-      if(data.success)
-      {
-        self.setState({ developers: data.result });
-      }
-    })
-    .catch(function(_err){
-      if(_err && _err.response  && _err.response.status === 401) {
-        var action = userLoggedOutAction();
-        self.props.dispatch(action);
-        self.props.history.push(routeNames.LOGIN);
-        return;
-      }
-    });
+    this.props.onGetFavDevs(body)
   }
 
   menuClick(index) {
@@ -113,7 +110,14 @@ class ListFavouriteDevView extends Component {
 const mapStateToProps = appState => ({
   full_name: appState.userRoot.user.full_name,
   userId: appState.userRoot.user.id,
-  role_type_id: appState.userRoot.user.role_type_id
+  role_type_id: appState.userRoot.user.role_type_id,
+  developers: appState.customer.developers
 });
 
-export default withRouter(connect(mapStateToProps)(ListFavouriteDevView));
+const mapDispatchToPops = dispatch => {
+  return {
+    onGetFavDevs: (data) => dispatch({ type: "GET_FAV_DEVS", data }),
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToPops)(ListFavouriteDevView));

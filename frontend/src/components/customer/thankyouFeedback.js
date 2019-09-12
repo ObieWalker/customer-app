@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
-import routeNames from "../../constants/routeNames";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import NotHappy from "../../assets/NotHappy_Icon.png";
@@ -10,6 +8,7 @@ import Great from "../../assets/Great_Icon.png";
 import "./feedback.css";
 import decode from "jwt-decode";
 import { Link } from "react-router-dom";
+
 class ThankyouFeedback extends Component {
   constructor(props) {
     super(props);
@@ -49,36 +48,23 @@ class ThankyouFeedback extends Component {
         feedBackData:feedBackData,
         devId:feedBackData.devId
       });
-      axios.post(routeNames.API_CUSTOMER,
-       {
-          action: "rate",
-          customerId:feedBackData.customerId,
-          standupId:feedBackData.standupId,
-          feedbackPublicLink:feedBackData.feedbackPublicLink,
-          rate:feedBackData.feedbackValue,
-          token:this.token
-      }).then((res)=>{
-            if(res.data.success){
-                this.setState({
-                    ...this.state,
-                    feedBackSaved:true,
-                    tokenValid:true
-                })
-            }else{
-              this.setState({
-                ...this.state,
-                feedBackSaved:false,
-                tokenValid:false
-            })
-            }
-      })
-    } else {
-      this.setState({
-        ...this.state,
-        tokenValid: false
-      })
+      this.props.onSendRating({
+        action: "rate",
+        customerId:feedBackData.customerId,
+        standupId:feedBackData.standupId,
+        feedbackPublicLink:feedBackData.feedbackPublicLink,
+        rate:feedBackData.feedbackValue,
+        token:this.token
+      });
     }
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sendRating.success !== prevProps.sendRating.success) {
+      this.setFeedbackState(this.props.sendRating)
+    }
+  }
+
   selectedRating = (e,id) => {
     this.setState((state)=>{
        return{ ...state,
@@ -87,32 +73,33 @@ class ThankyouFeedback extends Component {
     this.setState((state)=>{
        return{...state,
         selected: id}
-      });
-    axios
-      .post(routeNames.API_CUSTOMER, {
-        action: "rate",
-        customerId:this.state.feedBackData.customerId,
-        standupId:this.state.feedBackData.standupId,
-        feedbackPublicLink:this.state.feedBackData.feedbackPublicLink,
-        rate:id,
-        token:this.token
-      })
-      .then(res => {
-        if(res.data.success){
-            this.setState({
-                ...this.state,
-                feedBackSaved:true,
-                tokenValid:true
-            })
-        }else{
-          this.setState({
-            ...this.state,
-            feedBackSaved:false,
-            tokenValid:false
-        })
-        }
-      });
+    });
+
+    this.props.onSendRating({
+      action: "rate",
+      customerId:this.state.feedBackData.customerId,
+      standupId:this.state.feedBackData.standupId,
+      feedbackPublicLink:this.state.feedBackData.feedbackPublicLink,
+      rate:id,
+      token:this.token
+    });
   };
+
+  setFeedbackState = (sendRating) => {
+    if(sendRating.success){
+      this.setState({
+        ...this.state,
+        feedBackSaved:true,
+        tokenValid:true
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        feedBackSaved:false,
+        tokenValid:false
+      })
+    }
+  }
 
   render({} = this.props) {
     const emotions = this.state.listOfEmotions.map((item, index) => {
@@ -164,6 +151,13 @@ class ThankyouFeedback extends Component {
 const mapStateToProps = appState => ({
   full_name: appState.userRoot.user.full_name,
   userId: appState.userRoot.user.id,
-  role_type_id: appState.userRoot.user.role_type_id
+  role_type_id: appState.userRoot.user.role_type_id,
+  sendRating: appState.customer.sendRating
 });
-export default withRouter(connect(mapStateToProps)(ThankyouFeedback));
+
+const mapDispatchToPops = dispatch => {
+  return {
+    onSendRating: (data) => dispatch({ type: "SEND_RATING", data }),
+  }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToPops)(ThankyouFeedback));
