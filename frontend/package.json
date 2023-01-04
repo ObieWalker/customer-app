@@ -49,6 +49,6 @@
   "proxy": "http://localhost:6969",
   "devDependencies": {
     "react-dev-utils": "^8.0.0",
-    "react-scripts": "^2.1.8"
+    "react-scripts": "^5.0.1"
   }
 }
