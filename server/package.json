@@ -12,7 +12,7 @@
     "jquery": "^3.3.1",
     "mysql": "^2.17.1",
     "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
+    "passport-jwt": "^4.0.1",
     "react": "^16.8.5",
     "react-bootstrap": "^1.0.0-beta.6",
     "react-compound-slider": "^1.2.1",
